@@ -1,6 +1,7 @@
 \documentclass{beamer}\usetheme{boxes}
 
-\usepackage{amsmath,hyperref}
+\usepackage{amsmath,hyperref,bbding}
+\usepackage{todonotes}
 
 \newcommand{\Mp}{\ensuremath{{M_{+}}}}
 \newcommand{\barMp}{\ensuremath{\overline{\Mp}}}
@@ -13,12 +14,16 @@
 
 \newcommand{\bskip}{\\~\\}
 
-\author[Pearson]{Carl~A.~B.~Pearson}
+\newcommand{\checkitem}{\item[\Checkmark]}
+\newcommand{\xitem}{\item[\XSolidBrush]}
+\newcommand{\mehitem}{\item[$\approx$]}
 
+\author[CABP-BHS]{Carl~A.~B.~Pearson \&\ Burton~H.~Singer}
+\institute[UF]{University of Florida, Emerging Pathogens Institute}
 \usepackage{Sweave}
 \begin{document}
 \input{template-concordance}
-\title{A TEMPLATE}
+\title{MURI 2013 Review}
 
 \institute[University of Florida]{
 Emerging Pathogens Institute, University of Florida
@@ -26,126 +31,93 @@ Emerging Pathogens Institute, University of Florida
 \frame{\titlepage}
 
 \frame{
-\frametitle{A SIMPLE LIST OF POINTS}
+\frametitle{Overview}
 \begin{itemize}
-\item point one,
-\item two,
-\item see
+\item development of simulation framework,
+\item intra-MURI projects,
+\item extra-MURI projects
 \end{itemize}
 % notes-notes-notes
 }
 
 \frame{
-\frametitle{INSERTING AN R-GENERATED FIGURE}
-\begin{figure}
-\begin{center}
-\includegraphics{template-plotfig1}
-\end{center}
-\end{figure}
-% notes-notes-notes
-}
-
-\frame{
-\frametitle{INSERT ANOTHER PDF}
-\begin{figure}
-\begin{center}
-\includegraphics[width=0.9\textwidth]{insert.pdf}
-\caption{Bicout et al. J. Med. Entomol. 43(5): 936-946 (2006)}
-\end{center}
-\end{figure}
-% this is a not uncommon measurement of a seasonally varying vector population.
-}
-
-\frame{
-\frametitle{SHOW SOME MATH}
-$$
-M(t) = C\sin(\omega t+\theta)
-$$
-}
-
-% plotfig1
-\usebackgroundtemplate{\includegraphics[width=0.9\paperheight,height=0.9\paperheight]{template-plotfig1.pdf}}
-\frame{
-\frametitle{USE PREVIOUSLY GENERATING THING AS BACKGROUND}
+\frametitle{Simulation Framework}
 \begin{itemize}
-\item with
-\item some
-\item text
-\item over it
+\item Basic problem: lots of graph metrics, so what?
+\item Limited closure of inductive-deductive loop
+\item Experimental options restricted
+\item Want simple tool to try mechanics
+\item so: need piping connecting\begin{itemize}
+  \item initial graph generation
+  \item dynamic graph evolution
+  \item ``message'' passing and observation model
+  \item agent-to-agent behavior
+  \item agent-to-broadcast (and vv.) behavior
+  \item interventions
+  \item plus computational concerns (e.g., IO, cluster computation)
 \end{itemize}
-}
-\usebackgroundtemplate{}
-
-
-\frame{
-\frametitle{SEVERAL EQUATIONS}
-\begin{align*}
-E(t) &= \begin{cases}
-        \dfrac{\Mp}{\Dt} & t \in \Dt \\
-        0 & \textrm{otherwise}
-        \end{cases}\tag{Step} \\
-E(\rho, t) &= \begin{cases}
-        \dfrac{2\Mp}{\Dt(2-\rho)} & t \in \Dt(1-\rho) \\
-        \dfrac{2\Mp}{\Dt(2-\rho)\rho}\left(1-\dfrac{2|t|}{\Dt}\right) & t \in \rho\Dt \\
-        0 & \textrm{otherwise}
-        \end{cases}\tag{Modified Step} \\
-E(t) &= \dfrac{2\Mp}{\Dt}\sqrt{\dfrac{2}{\pi}}e^{-\dfrac{8t^2}{\Dt^2}}\tag{Approximate $\delta$}
-\end{align*}
-}
-
-% DEFINE LOTS OF R...
-
-% THEN USE IT SEVERAL TIMES
-\frame{
-\frametitle{Modified Step (Trapezoid)}
-\begin{figure}
-\begin{center}
-\includegraphics{template-pstrap}
-\end{center}
-\end{figure}
-}
-
-\frame{
-\frametitle{Modified Step (Triangle)}
-\begin{figure}
-\begin{center}
-\includegraphics{template-pstri}
-\end{center}
-\end{figure}
-}
-
-\frame{
-\frametitle{Approx. $\delta$}
-\begin{figure}
-\begin{center}
-\includegraphics{template-psdel}
-\end{center}
-\end{figure}
-}
-
-\frame{
-\frametitle{USING COLUMNS EXAMPLE}
-\begin{columns}[t]
-\begin{column}{0.3\textwidth}
-TEXT LEFT, FIG RIGHT\cite{someref}
-\end{column}
-\begin{column}{0.7\textwidth}
-\begin{figure}
-\begin{center}
-\includegraphics[width=1.1\textwidth]{justone.pdf}
-\end{center}
-\end{figure}
-\end{column}
-
-\end{columns}
+\end{itemize}
 % notes-notes-notes
 }
 
 \frame{
-\frametitle{BIBLIOGRAPHY EXAMPLE (CITE ON PREV SLIDE)}
-\footnotesize
-\bibliography{biblio}{}
-\bibliographystyle{plain}
+\frametitle{Simulation Framework Progress}
+\begin{itemize}
+  \checkitem initial graph generation
+  \xitem dynamic graph evolution
+  \checkitem ``message'' passing and observation model
+  \checkitem agent-to-agent behavior
+  \xitem agent-to-broadcast (and vv.) behavior
+  \xitem interventions
+  \mehitem plus computational concerns (e.g., IO, cluster computation)
+\end{itemize}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Results Reported at Sunbelt}
+\begin{itemize}
+  \item simple graph generation:
+  \begin{itemize}
+    \item households into communities
+    \item clanestine manager + cliqued groups of subordinates
+  \end{itemize}
+  \item simple message passing - ``Good'' vs. ``Bad''
+\end{itemize}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Sample Graph}
+\missingfigure{toss in sunbelt example}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Sample Results Analysis}
+\missingfigure{toss in sunbelt example}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Intra-MURI Projects}
+\begin{itemize}
+\item[Shapiro] using telephony data to parametrize graph generation
+\item[Shapiro] identification with evolving SIMs
+\item[Lazar] simulate firm-induced vs background donations
+\end{itemize}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Extra-MURI Projects}
+\begin{itemize}
+\item D. Bright -- agent/process-based models of meth production
+\item K. Carley -- adding broadcast/mean-field perspectives to agent-models
+\item SAIC/L. Gerdes -- geo-temporal hashing, specifically estimating between-observation distribution
+\item Assorted EPI -- cryptic infections (equivalent to rumor spreading source ID), using large Montreal WiFi access metadata
+\end{itemize}
+% notes-notes-notes
 }
 
 \end{document}
