@@ -3,64 +3,58 @@
 \usepackage{amsmath,hyperref,bbding}
 \usepackage{todonotes}
 
-\newcommand{\Mp}{\ensuremath{{M_{+}}}}
-\newcommand{\barMp}{\ensuremath{\overline{\Mp}}}
-\newcommand{\Dt}{\ensuremath{\Delta t}}
-\newcommand{\tM}[1]{\ensuremath{\tilde{M}(#1)}}
-\newcommand{\tMt}{\tM{\tau}}
-\newcommand{\tMB}{\ensuremath{{\tilde{M}_B}}}
-\newcommand{\tE}[1]{\ensuremath{{\tilde{E}(#1)}}}
-\newcommand{\tEt}{\tE{\tau}}
-
 \newcommand{\bskip}{\\~\\}
 
 \newcommand{\checkitem}{\item[\Checkmark]}
 \newcommand{\xitem}{\item[\XSolidBrush]}
 \newcommand{\mehitem}{\item[$\approx$]}
+\newcommand{\easyframe}[2]{\frame{\frametitle{#1}
+#2
+}}
 
 \author[CABP-BHS]{Carl~A.~B.~Pearson \&\ Burton~H.~Singer}
 \institute[UF]{University of Florida, Emerging Pathogens Institute}
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 \title{MURI 2013 Review}
+\institute[University of Florida]{Emerging Pathogens Institute, University of Florida}
 
-\institute[University of Florida]{
-Emerging Pathogens Institute, University of Florida
-}
 \frame{\titlepage}
 
-\frame{
-\frametitle{Overview}
+\easyframe{Overview}{
 \begin{itemize}
-\item development of simulation framework,
-\item intra-MURI projects,
-\item extra-MURI projects
+\item<1-> development of simulation framework,
+\item<2-> intra-MURI projects,
+\item<3-> extra-MURI projects
 \end{itemize}
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Simulation Framework}
+\easyframe{Simulation Framework}{
+Basic problem: lots of graph metrics, so what?
 \begin{itemize}
-\item Basic problem: lots of graph metrics, so what?
-\item Limited closure of inductive-deductive loop
-\item Experimental options restricted
-\item Want simple tool to try mechanics
-\item so: need piping connecting\begin{itemize}
-  \item initial graph generation
-  \item dynamic graph evolution
-  \item ``message'' passing and observation model
-  \item agent-to-agent behavior
-  \item agent-to-broadcast (and vv.) behavior
-  \item interventions
-  \item plus computational concerns (e.g., IO, cluster computation)
-\end{itemize}
+  \item<2-> Limited closure of inductive-deductive loop
+  \item<3-> Experimental options restricted
+  \item<4-> So: want simple tool to simulate mechanics
 \end{itemize}
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Simulation Framework Progress}
+\easyframe{Simulation Framework}{
+``Simple'' == reduced syntax + piping connecting
+\begin{itemize}
+  \item<2-> initial graph generation
+  \item<3-> dynamic graph evolution
+  \item<4-> ``message'' passing and observation model
+  \item<5-> agent-to-agent behavior
+  \item<6-> agent-to-broadcast (and {\em vv}.) behavior
+  \item<7-> interventions
+  \item<8-> plus computational concerns (e.g., IO, cluster computation)
+\end{itemize}
+% notes-notes-notes
+}
+
+\easyframe{Simulation Framework Progress}{
 \begin{itemize}
   \mehitem initial graph generation (on-going work w/ Ed/Edo re correlated interaction types)
   \xitem dynamic graph evolution
@@ -73,8 +67,11 @@ Emerging Pathogens Institute, University of Florida
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Results Reported at Sunbelt}
+\easyframe{Simulation Framework Progress}{
+
+}
+
+\easyframe{Results Reported at Sunbelt}{
 Worked w/ Edo \&\ Ed to prepare basic simulated communications
 \begin{itemize}
   \item simple graph generation:
@@ -88,26 +85,22 @@ Worked w/ Edo \&\ Ed to prepare basic simulated communications
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Sample Population Graphs}
+\easyframe{Sample Population Graphs}{
 \missingfigure{show mixed interaction types}
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Sample Population Graphs}
+\easyframe{Sample Population Graphs}{
 \missingfigure{highlight particular interaction types}
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Sample Results Analysis}
+\easyframe{Sample Results Analysis}{
 \missingfigure{toss in sunbelt example}
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Aside on Results}
+\easyframe{Aside on Results}{
 Measured strategies as TPR and FPR (sensitivity and 1 - specificity) over time, with fixed strategy criteria.
 
 ROC could capture TPR vs FPR over criteria -- measure ROC scalar (e.g., discrimination) time evolution?
@@ -116,18 +109,27 @@ Even more complicated surface with several internal setpoints
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Intra-MURI Projects}
+\easyframe{Intra-MURI Projects}{
 \begin{itemize}
 \item Airoldi / Kao -- implement more sophisticated conditional tie generators
-\item Lazer et al. -- simulate firm-induced vs background donations
+\item Lazer et al. -- simulate firm-induced vs background political donations
 \item Shapiro -- identification with evolving SIMs, and using telephony data to parametrize graph generation
 \end{itemize}
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Extra-MURI Projects}
+\easyframe{Intra-MURI Project: Lazer et al. Collaboration}{
+Brief Detailed Note
+\begin{itemize}
+\item<1-> sample a size distribution for firms,
+\item<2-> until desired population size generated
+\item<3-> randomly assign political preferences (A vs. B)\footnote{We use a uniform sample; seems reasonable to assume that there would be assortativity within firms.}
+\end{itemize}
+% We'll let Lazer's group speak to their specific work, and stick to what we're doing to support that.
+% in brief, we take a firm size distribution
+}
+
+\easyframe{Extra-MURI Projects}{
 \begin{itemize}
 \item D. Bright, UNSW -- agent/process-based models of meth production
 \item K. Carley, CMU -- adding broadcast/mean-field perspectives to agent-models
@@ -138,32 +140,27 @@ Even more complicated surface with several internal setpoints
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Extra-MURI Projects, David Bright}
+\easyframe{Extra-MURI Projects, David Bright}{
 \missingfigure{meth network highlighting players of different roles}
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Extra-MURI Projects, Kathleen Carley}
+\easyframe{Extra-MURI Projects, Kathleen Carley}{
 \missingfigure{ORA logo - unfortunately, other part is under NDA, though they are supposed to be used in tandem}
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Extra-MURI Projects, SAIC/Luke Gerdes}
+\easyframe{Extra-MURI Projects, SAIC/Luke Gerdes}{
 \missingfigure{mostly about applying kinematics + diffusion theory to describe probability distribution of multiple actors between observations}
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Extra-MURI Projects, Nancy Roberts \&\ Sean Everton}
+\easyframe{Extra-MURI Projects, Nancy Roberts \&\ Sean Everton}{
 \missingfigure{Some of their Noordin results?}
 % notes-notes-notes
 }
 
-\frame{
-\frametitle{Extra-MURI Projects, EPI}
+\easyframe{Extra-MURI Projects, EPI}{
 Mostly focused on large, anonymized data set of Montreal municipal WiFi access.
 
 Tracking spread of cryptic pathogen analogous to tracking rumor to source
