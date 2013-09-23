@@ -63,7 +63,7 @@ Emerging Pathogens Institute, University of Florida
 \frame{
 \frametitle{Simulation Framework Progress}
 \begin{itemize}
-  \checkitem initial graph generation
+  \mehitem initial graph generation (on-going work w/ Ed/Edo re correlated interaction types)
   \xitem dynamic graph evolution
   \checkitem ``message'' passing and observation model
   \checkitem agent-to-agent behavior
@@ -76,20 +76,28 @@ Emerging Pathogens Institute, University of Florida
 
 \frame{
 \frametitle{Results Reported at Sunbelt}
+Worked w/ Edo \&\ Ed to prepare basic simulated communications
 \begin{itemize}
   \item simple graph generation:
   \begin{itemize}
+    \item mixed interaction types
     \item households into communities
-    \item clanestine manager + cliqued groups of subordinates
+    \item clandestine manager + cliqued groups of subordinates
   \end{itemize}
-  \item simple message passing - ``Good'' vs. ``Bad''
+  \item simple message passing - ``Good'' vs. ``Bad'', time-independent probabilities
 \end{itemize}
 % notes-notes-notes
 }
 
 \frame{
-\frametitle{Sample Graph}
-\missingfigure{toss in sunbelt example}
+\frametitle{Sample Population Graphs}
+\missingfigure{show mixed interaction types}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Sample Population Graphs}
+\missingfigure{highlight particular interaction types}
 % notes-notes-notes
 }
 
@@ -100,11 +108,21 @@ Emerging Pathogens Institute, University of Florida
 }
 
 \frame{
+\frametitle{Aside on Results}
+Measured strategies as TPR and FPR (sensitivity and 1 - specificity) over time, with fixed strategy criteria.
+
+ROC could capture TPR vs FPR over criteria -- measure ROC scalar (e.g., discrimination) time evolution?
+
+Even more complicated surface with several internal setpoints
+% notes-notes-notes
+}
+
+\frame{
 \frametitle{Intra-MURI Projects}
 \begin{itemize}
-\item[Shapiro] using telephony data to parametrize graph generation
-\item[Shapiro] identification with evolving SIMs
-\item[Lazar] simulate firm-induced vs background donations
+\item Airoldi / Kao -- implement more sophisticated conditional tie generators
+\item Lazer et al. -- simulate firm-induced vs background donations
+\item Shapiro -- identification with evolving SIMs, and using telephony data to parametrize graph generation
 \end{itemize}
 % notes-notes-notes
 }
@@ -112,11 +130,44 @@ Emerging Pathogens Institute, University of Florida
 \frame{
 \frametitle{Extra-MURI Projects}
 \begin{itemize}
-\item D. Bright -- agent/process-based models of meth production
-\item K. Carley -- adding broadcast/mean-field perspectives to agent-models
-\item SAIC/L. Gerdes -- geo-temporal hashing, specifically estimating between-observation distribution
+\item D. Bright, UNSW -- agent/process-based models of meth production
+\item K. Carley, CMU -- adding broadcast/mean-field perspectives to agent-models
+\item SAIC/L. Gerdes, USMA -- geo-temporal hashing, specifically estimating between-observation distribution
+\item N. Roberts and S. Everton, NPGS -- dynamic growth of Noordin network
 \item Assorted EPI -- cryptic infections (equivalent to rumor spreading source ID), using large Montreal WiFi access metadata
 \end{itemize}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Extra-MURI Projects, David Bright}
+\missingfigure{meth network highlighting players of different roles}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Extra-MURI Projects, Kathleen Carley}
+\missingfigure{ORA logo - unfortunately, other part is under NDA, though they are supposed to be used in tandem}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Extra-MURI Projects, SAIC/Luke Gerdes}
+\missingfigure{mostly about applying kinematics + diffusion theory to describe probability distribution of multiple actors between observations}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Extra-MURI Projects, Nancy Roberts \&\ Sean Everton}
+\missingfigure{Some of their Noordin results?}
+% notes-notes-notes
+}
+
+\frame{
+\frametitle{Extra-MURI Projects, EPI}
+Mostly focused on large, anonymized data set of Montreal municipal WiFi access.
+
+Tracking spread of cryptic pathogen analogous to tracking rumor to source
 % notes-notes-notes
 }
 
