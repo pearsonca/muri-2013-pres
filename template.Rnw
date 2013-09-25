@@ -1,6 +1,6 @@
 \documentclass{beamer}\usetheme{boxes}
 
-\usepackage{amsmath,hyperref,bbding}
+\usepackage{amsmath,hyperref,bbding,listings,url}
 \usepackage{todonotes}
 
 \newcommand{\bskip}{\\~\\}
@@ -12,18 +12,38 @@
 #2
 }}
 
+\lstdefinelanguage{scala}{morekeywords={class,object,trait,extends,with,new,if,while,for,def,val,var,this,override},
+otherkeywords={->,=>},
+%procnamekeys={def,.},
+sensitive=true,
+keywordstyle=\color{magenta},
+commentstyle=\color{green},
+identifierstyle=\color{blue},
+%procnamestyle=\color{black},
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/},
+morestring=[b]"}
+% Default settings for code listings
+\lstset{frame=tb,language=scala,aboveskip=3mm,belowskip=3mm,
+showstringspaces=false,columns=flexible,basicstyle={\small\ttfamily}}
+% handle tilde characters
+\lstset{literate=%
+{~}{\url{~}}1
+}
+
+
 \author[CABP-BHS]{Carl~A.~B.~Pearson \&\ Burton~H.~Singer}
 \institute[UF]{University of Florida, Emerging Pathogens Institute}
 \begin{document}
 \SweaveOpts{concordance=TRUE}
-\title{MURI 2013 Review}
+\title{MURI 2013 Review, Part I}
 \institute[University of Florida]{Emerging Pathogens Institute, University of Florida}
 
 \frame{\titlepage}
 
 \easyframe{Overview}{
 \begin{itemize}
-\item<1-> development of simulation framework,
+\item<1-> our focus: simulation approaches,
 \item<2-> intra-MURI projects,
 \item<3-> extra-MURI projects
 \end{itemize}
@@ -37,7 +57,9 @@ Basic problem: lots of graph metrics, so what?
   \item<3-> Experimental options restricted
   \item<4-> So: want simple tool to simulate mechanics
 \end{itemize}
-% notes-notes-notes
+% That is - does centrality matter?  Which centrality?  Does modularity matter?  What ties should be measured for that module?
+% How do you tell? Conventional physical sciences experiments aren't available - I recently had an argument about the nature of the physical sciences vs social sciences.  We never agreed fully that there is a difference, but agreed that both follow the scientific method, and that the physical sciences have an easier time with measurement.  I think that latter point is pretty significant, she disagreed?  I'm not sure.
+% Anyway - statistical outcomes aren't really the way the physical sciences like to do business.  But we can always do some more experiments, and the effects of history are quite short.  Less so with social phenomena.
 }
 
 \easyframe{Simulation Framework}{
@@ -56,20 +78,45 @@ Basic problem: lots of graph metrics, so what?
 
 \easyframe{Simulation Framework Progress}{
 \begin{itemize}
-  \mehitem initial graph generation (on-going work w/ Ed/Edo re correlated interaction types)
-  \xitem dynamic graph evolution
-  \checkitem ``message'' passing and observation model
-  \checkitem agent-to-agent behavior
-  \xitem agent-to-broadcast (and vv.) behavior
-  \xitem interventions
-  \mehitem plus computational concerns (e.g., IO, cluster computation)
+  \mehitem<2-> syntax
+  \mehitem<3-> initial graph generation (on-going work w/ Ed/Edo re correlated interaction types)
+  \xitem<4-> dynamic graph evolution
+  \checkitem<5-> ``message'' passing and observation model
+  \checkitem<6-> agent-to-agent behavior
+  \xitem<7-> agent-to-broadcast (and vv.) behavior
+  \xitem<8-> interventions
+  \mehitem<9-> plus computational concerns (e.g., IO, cluster computation)
 \end{itemize}
 % notes-notes-notes
 }
 
-\easyframe{Simulation Framework Progress}{
-
-}
+\begin{frame}[fragile]
+\frametitle{Simulation Framework Syntax Progress}
+\begin{lstlisting}
+  def star
+  [V <: Vertex[EdgeType,V]]
+  (spokes : Seq[V], src: V) = {
+    src <~> spokes
+    src +: spokes
+  }
+\end{lstlisting}
+so, e.g.
+\begin{lstlisting}
+  // A-E : Vertex
+  val spoked = star(A, List(B, C, D, E))
+  override def remix
+  [V <: Vertex[EdgeType,V]]
+  (vs : Seq[V], rate:Double) = {
+    vs.dPairs.filter { _ => DoubleSrc.next < rate }.
+    foreach { p => p._1 !~> p._2 }
+  }
+  remix(spoked,someRate) // directed edges flipped @ someRate 
+\end{lstlisting}
+% Scala offers nice mix of DSL (the graph operators),
+% fully featured object-oriented + functional programming language
+% unlike R (poor object support, stuck with expression mistakes from S)
+% unlike C-family / Java, less boilerplate
+\end{frame}
 
 \easyframe{Results Reported at Sunbelt}{
 Worked w/ Edo \&\ Ed to prepare basic simulated communications
@@ -100,18 +147,19 @@ Worked w/ Edo \&\ Ed to prepare basic simulated communications
 % notes-notes-notes
 }
 
-\easyframe{Aside on Results}{
-Measured strategies as TPR and FPR (sensitivity and 1 - specificity) over time, with fixed strategy criteria.
+\easyframe{Aside on Results}{\begin{itemize}
+\item<1-> Measured strategies as TPR and FPR (sensitivity and 1 - specificity) over time, with fixed strategy criteria.
 
-ROC could capture TPR vs FPR over criteria -- measure ROC scalar (e.g., discrimination) time evolution?
+\item<2-> ROC could capture TPR vs FPR over criteria -- measure ROC scalar (e.g., discrimination) time evolution?
 
-Even more complicated surface with several internal setpoints
+\item<3-> With several strategy knobs, even more complicated surface
+\end{itemize}
 % notes-notes-notes
 }
 
 \easyframe{Intra-MURI Projects}{
 \begin{itemize}
-\item Airoldi / Kao -- implement more sophisticated conditional tie generators
+\item Airoldi / Kao -- implement more sophisticated conditional tie generators / activators
 \item Lazer et al. -- simulate firm-induced vs background political donations
 \item Shapiro -- identification with evolving SIMs, and using telephony data to parametrize graph generation
 \end{itemize}
@@ -119,11 +167,18 @@ Even more complicated surface with several internal setpoints
 }
 
 \easyframe{Intra-MURI Project: Lazer et al. Collaboration}{
-Brief Detailed Note
+Brief Detailed Note - Using Simulation Tool
 \begin{itemize}
-\item<1-> sample a size distribution for firms,
-\item<2-> until desired population size generated
-\item<3-> randomly assign political preferences (A vs. B)\footnote{We use a uniform sample; seems reasonable to assume that there would be assortativity within firms.}
+\item<2-> set up a population,
+\item<3-> generate R and D stars,
+\item<4-> sample a size distribution of firms, generate stars for each firm to individuals,
+\item<5-> generate candidates / PACs with R or D affiliation,
+\item<6-> star them to random subsets of firms,
+\item<7-> each step\begin{itemize}
+\item<7-> test for random donation (emit events from R/D stars)
+\item<7-> have candidates / PACs solicit firms, which in turn organize events
+\item<7-> employees respond to events with some probability, based on previous giving, personal affiliation vs event affiliation, etc
+\end{itemize}
 \end{itemize}
 % We'll let Lazer's group speak to their specific work, and stick to what we're doing to support that.
 % in brief, we take a firm size distribution
