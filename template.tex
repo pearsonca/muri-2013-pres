@@ -149,13 +149,13 @@ Worked w/ Edo \&\ Ed to prepare basic simulated communications
 }
 
 \easyframe{Aside on Results}{\begin{itemize}
-\item<1-> Measured strategies as TPR and FPR (sensitivity and 1 - specificity) over time, with fixed strategy criteria.
+\item<1-> Measured strategies as TPR and FPR over time, with fixed strategy criteria.
 
 \item<2-> ROC could capture TPR vs FPR over criteria -- measure ROC scalar (e.g., discrimination) time evolution?
 
 \item<3-> With several strategy knobs, even more complicated surface
 \end{itemize}
-% notes-notes-notes
+% TPR = sensitivity, FRP = 1 - specificity
 }
 
 \easyframe{Intra-MURI Projects}{
@@ -182,7 +182,15 @@ Brief Detailed Note - Using Simulation Tool
 \end{itemize}
 \end{itemize}
 % We'll let Lazer's group speak to their specific work, and stick to what we're doing to support that.
-% in brief, we take a firm size distribution
+}
+
+\easyframe{Intra-MURI Project: Lazer et al. Collaboration}{
+Analysis Idea
+\begin{itemize}
+\item intialize coordination belief network
+\item Each step provides Bayesian update based on concordant / discordant giving
+\item ROC discrimination calculated on percolation of coordination network
+\end{itemize}
 }
 
 \easyframe{Extra-MURI Projects}{
@@ -196,18 +204,37 @@ Brief Detailed Note - Using Simulation Tool
 % notes-notes-notes
 }
 
+\usebackgroundtemplate{\includegraphics[width=0.9\paperheight,height=0.9\paperheight]{bright_roles.pdf}}
 \easyframe{Extra-MURI Projects, David Bright}{
-\missingfigure{meth network highlighting players of different roles}
-% notes-notes-notes
 }
+\usebackgroundtemplate{}
 
 \easyframe{Extra-MURI Projects, Kathleen Carley}{
-\missingfigure{ORA logo - unfortunately, other part is under NDA, though they are supposed to be used in tandem}
+\begin{columns}[t]
+\begin{column}{0.45\textwidth}
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{casos_logo_dark.png}
+\end{center}
+\end{figure}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{ORA_logo.png}
+\end{center}
+\end{figure}
+\end{column}
+\end{columns}
 % notes-notes-notes
 }
 
 \easyframe{Extra-MURI Projects, SAIC/Luke Gerdes}{
-\missingfigure{mostly about applying kinematics + diffusion theory to describe probability distribution of multiple actors between observations}
+Work on geo-temporal hashing. 
+
+They have good sifting tools to generate fuzzy co-location / time, but limited extrapolation.
+
+Will be adding in some basic kinematics to expand that fuzz to unobserved periods, incorporate negative observations.
 % notes-notes-notes
 }
 
